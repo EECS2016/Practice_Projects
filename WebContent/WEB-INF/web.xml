@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+id="WebApp_ID" 
+version="3.1">
+  <!--EasyBuy显示的名称--> 
+  <display-name>EasyBuy</display-name>
+  
+  
+ <!--EasyBuy的监听器的配置-->  
+ <listener>
+   <listener-class>EB_Controll.C_Action.A_Listener.A_Listener_01</listener-class>
+  </listener>
+
+
+   <!--struts2过滤器配置；可配置其struts.xml文件的路径（默认在Java源代码的src根目录下）
+   <filter><filter-name>struts2</filter-name><filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class></filter>
+   <filter-mapping><filter-name>struts2</filter-name><url-pattern>*.action</url-pattern></filter-mapping>
+-->
+  
+ <!--EasyBuy的过滤器配置和目标URL-->  
+  <filter>
+    <filter-name>A_Filter_01</filter-name>
+    <filter-class>EB_Controll.C_Action.A_Filter.A_Filter_01</filter-class>
+    <init-param>
+      <param-name>test-param</param-name>
+      <param-value>Initialization-Parameter</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>A_Filter_01</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  <!--EasyBuy的公共（上下文或application）参数配置-->  
+  <context-param>
+   <param-name>encoding</param-name>
+   <param-value>UTF-8</param-value>
+  </context-param>
+  
+
+ 
+  
+  <!--EasyBuy的Servlet的配置--> 
+   <servlet>  
+    <servlet-name>A_Servlet_00</servlet-name><servlet-class>EB_Controll.C_Action.A_Servlet.A_Servlet_00</servlet-class>  
+   </servlet>   
+  <servlet>
+    <servlet-name>A_Servlet_01</servlet-name><servlet-class>EB_Controll.C_Action.A_Servlet.A_Servlet_01</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>Servlet_Main_News</servlet-name><servlet-class>EB_Controll.C_Action.A_Servlet.Servlet_Main_News</servlet-class>
+  </servlet>
+    <servlet>
+    <servlet-name>Servlet_Main_Order</servlet-name><servlet-class>EB_Controll.C_Action.A_Servlet.Servlet_Main_Order</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>Servlet_Main_OrderDetail</servlet-name><servlet-class>EB_Controll.C_Action.A_Servlet.Servlet_Main_OrderDetail</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>Servlet_Main_Product</servlet-name><servlet-class>EB_Controll.C_Action.A_Servlet.Servlet_Main_Product</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>Servlet_Main_ProductCategory</servlet-name><servlet-class>EB_Controll.C_Action.A_Servlet.Servlet_Main_ProductCategory</servlet-class>
+  </servlet>
+    <servlet>
+    <servlet-name>Servlet_Main_User</servlet-name><servlet-class>EB_Controll.C_Action.A_Servlet.Servlet_Main_User</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>Servlet_Main_UserComment</servlet-name><servlet-class>EB_Controll.C_Action.A_Servlet.Servlet_Main_UserComment</servlet-class>
+  </servlet> 
+  <servlet>
+    <servlet-name>VerifyCodeServlet</servlet-name><servlet-class>EB_Other.VerifyCodeServlet</servlet-class>
+  </servlet>
+  
+  <!--EasyBuy的Servlet的URL-->
+  <servlet-mapping>  
+   <servlet-name>A_Servlet_00</servlet-name><url-pattern>/A_Servlet_00</url-pattern>  
+  </servlet-mapping> 
+   <servlet-mapping>
+    <servlet-name>A_Servlet_01</servlet-name><url-pattern>/A_Servlet_01</url-pattern>
+  </servlet-mapping>    
+   <servlet-mapping>
+    <servlet-name>Servlet_Main_News</servlet-name><url-pattern>/Servlet_Main_News</url-pattern>
+  </servlet-mapping>  
+    <servlet-mapping>
+    <servlet-name>Servlet_Main_Order</servlet-name><url-pattern>/Servlet_Main_Order</url-pattern>
+  </servlet-mapping>    
+   <servlet-mapping>
+    <servlet-name>Servlet_Main_OrderDetail</servlet-name><url-pattern>/Servlet_Main_OrderDetail</url-pattern>
+  </servlet-mapping>  
+  <servlet-mapping>
+    <servlet-name>Servlet_Main_Product</servlet-name><url-pattern>/Servlet_Main_Product</url-pattern>
+  </servlet-mapping>    
+   <servlet-mapping>
+    <servlet-name>Servlet_Main_ProductCategory</servlet-name><url-pattern>/Servlet_Main_ProductCategory</url-pattern>
+  </servlet-mapping>  
+    <servlet-mapping>
+    <servlet-name>Servlet_Main_User</servlet-name><url-pattern>/Servlet_Main_User</url-pattern>
+  </servlet-mapping>    
+   <servlet-mapping>
+    <servlet-name>Servlet_Main_UserComment</servlet-name><url-pattern>/Servlet_Main_UserComment</url-pattern>
+  </servlet-mapping>  
+   <servlet-mapping>
+    <servlet-name>VerifyCodeServlet</servlet-name><url-pattern>/VerifyCodeServlet</url-pattern>
+  </servlet-mapping>  
+ 
+  
+  
+    
+  <!--WEB-INF目录下的JSP Servlet文件配置;一般，为了安全仅后端可访问该目录下的页面，而客户端仅能访问唯一放在此目录外的主页面-->      
+  <!--EasyBuy主页JSP Servlet配置-->   
+   <servlet>  
+    <servlet-name>EasyBuy_MainPage</servlet-name><jsp-file>/WEB-INF/EB_View/EasyBuy_MainPage.jsp</jsp-file>  
+   </servlet>     
+  <!--前台JSP Servlet文件配置--> 
+   <!--FE_Cart.jsp（购物车的页面）--> 
+   <servlet>  
+    <servlet-name>FE_Cart</servlet-name><jsp-file>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_Cart.jsp</jsp-file>  
+   </servlet> 
+   <!--FE_ShoppingResult.jsp（购物成功的页面）-->  
+   <servlet>  
+    <servlet-name>FE_ShoppingResult</servlet-name><jsp-file>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_ShoppingResult.jsp</jsp-file>  
+   </servlet>
+   <!--FE_ChooseAddress.jsp（收货地址选择的页面）-->    
+   <servlet>  
+    <servlet-name>FE_ChooseAddress</servlet-name><jsp-file>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_ChooseAddress.jsp</jsp-file>  
+   </servlet>  
+   <!--FE_GuestBook.jsp（网友留言簿的页面）--> 
+   <servlet>  
+    <servlet-name>FE_GuestBook</servlet-name><jsp-file>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_GuestBook.jsp</jsp-file>  
+   </servlet>   
+   <!--FE_Login.jsp（登录的页面）-->       
+   <servlet>  
+    <servlet-name>FE_Login</servlet-name><jsp-file>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_Login.jsp</jsp-file>  
+   </servlet>   
+   <!--FE_Register.jsp（注册的页面）-->    
+   <servlet>  
+    <servlet-name>FE_Register</servlet-name><jsp-file>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_Register.jsp</jsp-file>  
+   </servlet>
+   <!--FE_RegisterResult.jsp（注册成功的页面）-->    
+   <servlet>  
+    <servlet-name>FE_RegisterResult</servlet-name><jsp-file>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_RegisterResult.jsp</jsp-file>  
+   </servlet> 
+   <!--FE_NewsView.jsp（阅读新闻的页面）-->     
+   <servlet>  
+    <servlet-name>FE_NewsView</servlet-name><jsp-file>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_NewsView.jsp</jsp-file>  
+   </servlet>   
+   <!--FE_FE_ProductView.jsp（查看某个商品的页面）-->      
+   <servlet>  
+    <servlet-name>FE_FE_ProductView</servlet-name><jsp-file>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_FE_ProductView.jsp</jsp-file>  
+   </servlet>  
+   <!--FE_ProductListView.jsp（浏览商品列表的页面）-->     
+   <servlet>  
+    <servlet-name>FE_ProductListView</servlet-name><jsp-file>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_ProductListView.jsp</jsp-file>  
+   </servlet>     
+
+
+     
+  <!--后台JSP Servlet文件配置-->
+   <!--BE_IntoMain页和BE_Main页-->
+   <servlet>  
+    <servlet-name>BE_IntoMain</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BE_IntoMain.jsp</jsp-file>  
+   </servlet>  
+   <servlet>  
+    <servlet-name>BE_Main</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BE_Main.jsp</jsp-file>  
+   </servlet>     
+  <!--BE_Entity页-->       
+   <servlet>  
+    <servlet-name>BE_News</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_News.jsp</jsp-file>  
+   </servlet>  
+   <servlet>  
+    <servlet-name>BE_Order</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_Order.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_OrderDetail</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_OrderDetail.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_Product</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_Product.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_ProductCategory</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_ProductCategory.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_User</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_User.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_UserComment</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_UserComment.jsp</jsp-file>  
+   </servlet>
+  <!--BE_AddEntity（添加实体类）-->         
+   <servlet>  
+    <servlet-name>BE_AddNews</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_AddNews.jsp</jsp-file>  
+   </servlet>  
+   <servlet>  
+    <servlet-name>BE_AddOrder</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_AddOrder.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_AddOrderDetail</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_AddOrderDetail.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_AddProduct</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_AddProduct.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_AddProductCategory</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_AddProductCategory.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_AddUser</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_AddUser.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_AddUserComment</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_AddUserComment.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+   
+  <!--BE_DelEntity（删除实体类）-->    
+   <servlet-name>BE_DelNews</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_DelNews.jsp</jsp-file>  
+   </servlet>  
+   <servlet>  
+    <servlet-name>BE_DelOrder</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_DelOrder.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_DelOrderDetail</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_DelOrderDetail.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_DelProduct</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_DelProduct.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_DelProductCategory</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_DelProductCategory.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_DelUser</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_DelUser.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_DelUserComment</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_DelUserComment.jsp</jsp-file>  
+   </servlet> 
+       
+  <!--BE_ModifyEntity（修改实体类）-->   
+   <servlet>  
+    <servlet-name>BE_ModifyNews</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_ModifyNews.jsp</jsp-file>  
+   </servlet>  
+   <servlet>  
+    <servlet-name>BE_ModifyOrder</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_ModifyOrder.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_ModifyOrderDetail</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_ModifyOrderDetail.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_ModifyProduct</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_ModifyProduct.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_ModifyProductCategory</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_ModifyProductCategory.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_ModifyUser</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_ModifyUser.jsp</jsp-file>  
+   </servlet>     
+   <servlet>  
+    <servlet-name>BE_ModifyUserComment</servlet-name><jsp-file>/WEB-INF/EB_View/V_BackEnd/BackEnd_Entity/BE_ModifyUserComment.jsp</jsp-file>  
+   </servlet>     
+
+   
+        
+  <!--WEB-INF目录下的JSP Servlet文件的URL-->
+   <!--EasyBuy主页JSP Servlet配置-->   
+   <servlet-mapping>  
+    <servlet-name>EasyBuy_MainPage</servlet-name><url-pattern>/EasyBuy_MainPage.jsp</url-pattern>  
+   </servlet-mapping>
+  
+  <!--前台JSP Servlet文件的URL-->  
+   <!--FE_Cart.jsp（购物车的页面）--> 
+   <servlet-mapping>  
+    <servlet-name>FE_Cart</servlet-name><url-pattern>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_Cart.jsp</url-pattern>  
+   </servlet-mapping> 
+   <!--FE_ShoppingResult.jsp（购物成功的页面）-->  
+   <servlet-mapping>  
+    <servlet-name>FE_ShoppingResult</servlet-name><url-pattern>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_ShoppingResult.jsp</url-pattern>  
+   </servlet-mapping>
+   <!--FE_ChooseAddress.jsp（收货地址选择的页面）-->    
+   <servlet-mapping>  
+    <servlet-name>FE_ChooseAddress</servlet-name><url-pattern>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_ChooseAddress.jsp</url-pattern>  
+   </servlet-mapping>  
+   <!--FE_GuestBook.jsp（网友留言簿的页面）--> 
+   <servlet-mapping>  
+    <servlet-name>FE_GuestBook</servlet-name><url-pattern>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_GuestBook.jsp</url-pattern>  
+   </servlet-mapping>   
+   <!--FE_Login.jsp（登录的页面）-->       
+   <servlet-mapping>  
+    <servlet-name>FE_Login</servlet-name><url-pattern>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_Login.jsp</url-pattern>  
+   </servlet-mapping>   
+   <!--FE_Register.jsp（注册的页面）-->    
+   <servlet-mapping>  
+    <servlet-name>FE_Register</servlet-name><url-pattern>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_Register.jsp</url-pattern>  
+   </servlet-mapping>
+   <!--FE_RegisterResult.jsp（注册成功的页面）-->    
+   <servlet-mapping>  
+    <servlet-name>FE_RegisterResult</servlet-name><url-pattern>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_RegisterResult.jsp</url-pattern>  
+   </servlet-mapping> 
+   <!--FE_NewsView.jsp（阅读新闻的页面）-->     
+   <servlet-mapping>  
+    <servlet-name>FE_NewsView</servlet-name><url-pattern>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_NewsView.jsp</url-pattern>  
+   </servlet-mapping>   
+   <!--FE_FE_ProductView.jsp（查看某个商品的页面）-->      
+   <servlet-mapping>  
+    <servlet-name>FE_FE_ProductView</servlet-name><url-pattern>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_FE_ProductView.jsp</url-pattern>  
+   </servlet-mapping>  
+   <!--FE_ProductListView.jsp（浏览商品列表的页面）-->     
+   <servlet-mapping>  
+    <servlet-name>FE_ProductListView</servlet-name><url-pattern>/WEB-INF/EB_View/V_FrontEnd/FrontEnd_Entity/FE_ProductListView.jsp</url-pattern>  
+   </servlet-mapping>
+  
+ 
+  <!--后台JSP Servlet文件的URL-->
+  <!--BE_IntoMain页和BE_Main页-->
+  <servlet-mapping>  
+   <servlet-name>BE_IntoMain</servlet-name><url-pattern>/BE_IntoMain.jsp</url-pattern>  
+  </servlet-mapping>  
+  <servlet-mapping>  
+   <servlet-name>BE_Main</servlet-name><url-pattern>/BE_Main.jsp</url-pattern>  
+  </servlet-mapping> 
+  <!--BE_FindEntity首页-->
+  <servlet-mapping>  
+   <servlet-name>BE_News</servlet-name><url-pattern>/BE_News.jsp</url-pattern>  
+  </servlet-mapping>  
+  <servlet-mapping>  
+    <servlet-name>BE_Order</servlet-name><url-pattern>/BE_Order.jsp</url-pattern>  
+  </servlet-mapping>     
+  <servlet-mapping>  
+    <servlet-name>BE_OrderDetail</servlet-name><url-pattern>/BE_OrderDetail.jsp</url-pattern>  
+  </servlet-mapping>     
+  <servlet-mapping>  
+    <servlet-name>BE_Product</servlet-name><url-pattern>/BE_Product.jsp</url-pattern>  
+  </servlet-mapping>     
+  <servlet-mapping>  
+    <servlet-name>BE_ProductCategory</servlet-name><url-pattern>/BE_ProductCategory.jsp</url-pattern>  
+  </servlet-mapping>     
+  <servlet-mapping>  
+    <servlet-name>BE_User</servlet-name><url-pattern>/BE_User.jsp</url-pattern>  
+  </servlet-mapping>     
+  <servlet-mapping>  
+    <servlet-name>BE_UserComment</servlet-name><url-pattern>/BE_UserComment.jsp</url-pattern>  
+  </servlet-mapping>
+  <!--BE_AddEntity（添加实体类）-->          
+   <servlet-mapping>  
+    <servlet-name>BE_AddNews</servlet-name><url-pattern>/BE_AddNews.jsp</url-pattern>  
+   </servlet-mapping>  
+   <servlet-mapping>  
+    <servlet-name>BE_AddOrder</servlet-name><url-pattern>/BE_AddOrder.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_AddOrderDetail</servlet-name><url-pattern>/BE_AddOrderDetail.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_AddProduct</servlet-name><url-pattern>/BE_AddProduct.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_AddProductCategory</servlet-name><url-pattern>/BE_AddProductCategory.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_AddUser</servlet-name><url-pattern>/BE_AddUser.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_AddUserComment</servlet-name><url-pattern>/BE_AddUserComment.jsp</url-pattern>  
+   </servlet-mapping>
+   
+   <!--BE_DelEntity（删除实体类）-->        
+   <servlet-mapping>     
+   <servlet-name>BE_DelNews</servlet-name><url-pattern>/BE_DelNews.jsp</url-pattern>  
+   </servlet-mapping>  
+   <servlet-mapping>  
+    <servlet-name>BE_DelOrder</servlet-name><url-pattern>/BE_DelOrder.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_DelOrderDetail</servlet-name><url-pattern>/BE_DelOrderDetail.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_DelProduct</servlet-name><url-pattern>/BE_DelProduct.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_DelProductCategory</servlet-name><url-pattern>/BE_DelProductCategory.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_DelUser</servlet-name><url-pattern>/BE_DelUser.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_DelUserComment</servlet-name><url-pattern>/BE_DelUserComment.jsp</url-pattern>  
+   </servlet-mapping>  
+      
+   <!--BE_ModifyEntity（修改实体类）-->   
+   <servlet-mapping>  
+    <servlet-name>BE_ModifyNews</servlet-name><url-pattern>/BE_ModifyNews.jsp</url-pattern>  
+   </servlet-mapping>  
+   <servlet-mapping>  
+    <servlet-name>BE_ModifyOrder</servlet-name><url-pattern>/BE_ModifyOrder.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_ModifyOrderDetail</servlet-name><url-pattern>/BE_ModifyOrderDetail.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_ModifyProduct</servlet-name><url-pattern>/BE_ModifyProduct.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_ModifyProductCategory</servlet-name><url-pattern>/BE_ModifyProductCategory.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_ModifyUser</servlet-name><url-pattern>/BE_ModifyUser.jsp</url-pattern>  
+   </servlet-mapping>     
+   <servlet-mapping>  
+    <servlet-name>BE_ModifyUserComment</servlet-name><url-pattern>/BE_ModifyUserComment.jsp</url-pattern>  
+   </servlet-mapping>  
+ 
+ 
+ 
+  <!--配置EasyBuy项目默认优先访问的页面列表-->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+ 
+ 
+  
+  <!--配置EasyBuy_DB数据库连接池 -->
+  <resource-ref>
+   <description>MySQL/EasyBuy_DB Connection</description>
+    <res-ref-name>jdbc/mysql_EB</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+
+
+</web-app>
